@@ -136,9 +136,10 @@ ul { list-style: none; }
 .badge--red { background: var(--red); font-size: 20px; padding: 4px 12px; }
 .badge--navy { background: var(--navy); font-size: 19px; line-height: 1.15; padding: 6px 10px; }
 .badge--navy small { display: block; font-size: 17px; font-weight: 600; }
-/* ribbon fold under badges */
+/* ribbon fold under badges — overlaps 1.5px into the badge body so the tail
+   never detaches from it at fractional zoom levels (e.g. 1.33× on a 27") */
 .badge::after {
-  content: ''; position: absolute; right: 0; top: 100%;
+  content: ''; position: absolute; right: 0; top: calc(100% - 1.5px);
   border: 5px solid transparent;
 }
 .badge--red::after { border-top-color: #c23636; border-left-color: #c23636; }
