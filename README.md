@@ -7,8 +7,7 @@ open `index.html` in a browser (fonts load from `fonts/`).
 ## Run it
 ```bash
 cd PISMO-Prototype
-python3 -m http.server 8090
-# open http://localhost:8090
+python3 serve.py          # no-cache dev server on http://localhost:8090
 ```
 Designed at a fixed **1920px** canvas (same as the Figma frame).
 
