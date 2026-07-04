@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pismo — Online Knjižara</title>
+  <link rel="stylesheet" href="css/fonts.css?v=9">
+  <link rel="stylesheet" href="css/main.css?v=9">
+  <link rel="stylesheet" href="css/page.css?v=9">
+  <link rel="stylesheet" href="css/mobile.css?v=9">
+</head>
+<body>
+
+<!-- ============ 01 · HEADER ============ -->
+<header class="site-header">
+  <div class="header-bar">
+    <div class="container">
+      <button class="hdr-burger" aria-label="Meni" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+      </button>
+      <a href="#"><img class="header-logo" src="assets/01-header-logo.png" alt="Pismo"></a>
+      <button class="hdr-menu">Meni <span data-icon="chevron"></span></button>
+      <label class="hdr-search">
+        <input type="text" placeholder="Traži...">
+        <span data-icon="search"></span>
+      </label>
+      <div class="hdr-icons">
+        <button aria-label="Želje" data-icon="heartline"></button>
+        <button aria-label="Korpa" data-icon="basket"></button>
+      </div>
+      <button class="hdr-prijava">Prijava</button>
+      <button class="hdr-kreiraj">Kreiraj račun</button>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <div class="container">
+      <a href="#">Sve knjige</a>
+      <a href="#" class="is-active">Novo!</a>
+      <a href="#">Knjige za djecu</a>
+      <a href="#">Akcija</a>
+      <a href="#">Škola</a>
+      <a href="#">Književnost</a>
+      <a href="#">Za poklon</a>
+      <a href="#">Psihologija</a>
+    </div>
+  </nav>
+  <!-- mobile-only dropdown (opened by the burger; hidden on desktop) -->
+  <div class="mobile-menu">
+    <label class="hdr-search hdr-search--m">
+      <input type="text" placeholder="Traži...">
+      <span data-icon="search"></span>
+    </label>
+    <a href="#">Sve knjige</a>
+    <a href="#">Novo!</a>
+    <a href="#">Knjige za djecu</a>
+    <a href="#">Akcija</a>
+    <a href="#">Škola</a>
+    <a href="#">Književnost</a>
+    <a href="#">Za poklon</a>
+    <a href="#">Psihologija</a>
+    <button class="hdr-kreiraj hdr-kreiraj--m">Kreiraj račun</button>
+  </div>
+</header>
+
+<!-- ============ 02 · HERO (functional carousel) ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__frame">
+      <div class="hero__banner">
+        <!-- each slide is a real designed banner (title + artwork baked in) -->
+        <div class="hero__slide hero__slide--1 is-active" data-slide="0" role="img" aria-label="Bajke braće Grimm — Odabrane bajke svjetskih klasika"></div>
+        <div class="hero__slide hero__slide--2" data-slide="1" role="img" aria-label="Bijela knjiga — Han Kang"></div>
+        <div class="hero__slide hero__slide--3" data-slide="2" role="img" aria-label="Poraz Zapada — Emmanuel Todd"></div>
+        <div class="hero__slide hero__slide--4" data-slide="3" role="img" aria-label="Put kojim se rjeđe ide — M. Scott Peck"></div>
+        <div class="hero__slide hero__slide--5" data-slide="4" role="img" aria-label="Između vere i nacije: Pokret Mladi muslimani 1939–1990"></div>
+        <div class="hero__slide hero__slide--6" data-slide="5" role="img" aria-label="Muškarci su s Marsa, žene su sa Venere"></div>
+        <div class="hero__slide hero__slide--7" data-slide="6" role="img" aria-label="Bosanske basne"></div>
+      </div>
+      <!-- mobile-only prev/next arrows (hidden on desktop) -->
+      <button class="hero__arrow hero__arrow--l" data-dir="-1" aria-label="Prethodni">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hero__arrow hero__arrow--r" data-dir="1" aria-label="Sljedeći">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <!-- thumbnail nav — hover (or click) switches the banner -->
+      <div class="hero__thumbs">
+        <button class="hero__thumb th--0 is-active" data-go="0"><span>Bajke braće Grimm</span></button>
+        <button class="hero__thumb th--1" data-go="1"><span>Bijela knjiga</span></button>
+        <button class="hero__thumb th--2" data-go="2"><span>Poraz Zapada</span></button>
+        <button class="hero__thumb th--3" data-go="3"><span>Put kojim se rjeđe ide</span></button>
+        <button class="hero__thumb th--4" data-go="4"><span>Između vere i nacije</span></button>
+        <button class="hero__thumb th--5" data-go="5"><span>Muškarci su s Marsa</span></button>
+        <button class="hero__thumb th--6" data-go="6"><span>Bosanske basne</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · NOVO U PONUDI ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Novo u Ponudi</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <p class="sec-intro" style="margin:-14px 0 34px;font-family:var(--f-text);font-size:21px;color:var(--slate)">Ovo su najnoviji naslovi koji su upravo stigli. Izaberite nešto što će vas inspirirati.</p>
+    <div class="card-row" data-row="novo"></div>
+  </div>
+</section>
+
+<!-- ============ 04 · NAJPRODAVANIJE ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Najprodavanje</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="best__grid">
+      <div class="best__feature">
+        <img class="bf-desk" src="assets/04-feat-desk.png" alt="" aria-hidden="true">
+        <img class="bf-shape" src="assets/04-feat-shape.svg" alt="" aria-hidden="true">
+        <p class="bf-heading">Grmuša je najljepši turski ljubavni roman, koji vole i rado čitaju ljubitelji knjige svih uzrasta.</p>
+        <div class="bf-book"><img src="assets/04-feat-book.png" alt="Grmuša — Reşat Nuri Güntekin"></div>
+        <button class="btn bf-btn">Saznaj više <span class="bf-arrow"><svg viewBox="0 0 26 20" fill="none"><path d="M1 10h23M16 2l8 8-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      </div>
+      <div class="best__carousel">
+        <div class="best__track">
+          <article class="p-card p-card--quick">
+            <div class="p-card__media"><img class="p-card__cover" src="assets/04-usta-puna-mora.png" alt="">
+              <div class="badges"><span class="badge badge--red">15%</span><span class="badge badge--navy">10%<small>Za 3</small></span></div>
+              <div class="quick-actions"><button class="icon-circle icon-circle--heart" data-icon="heartline"></button><button class="icon-circle icon-circle--basket" data-icon="basket"></button></div>
+            </div>
+            <h3 class="p-card__title"><span>Usta puna mora</span></h3><p class="p-card__author">Jurica Pavičić</p>
+            <p class="p-card__price">18.90 KM <s>39.90 KM</s></p>
+            <div class="p-card__actions p-card__actions--m"><button class="btn btn--outline" data-cart data-added="Dodano"><span data-icon="basket"></span> Dodaj u Korpu</button></div>
+          </article>
+          <article class="p-card p-card--quick">
+            <div class="p-card__media"><img class="p-card__cover" src="assets/03-novo-cover-4.png" alt="">
+              <div class="badges"><span class="badge badge--red">15%</span><span class="badge badge--navy">10%<small>Za 3</small></span></div>
+              <div class="quick-actions"><button class="icon-circle icon-circle--heart" data-icon="heartline"></button><button class="icon-circle icon-circle--basket" data-icon="basket"></button></div>
+            </div>
+            <h3 class="p-card__title"><span>Usta puna mora</span></h3><p class="p-card__author">Jurica Pavičić</p>
+            <p class="p-card__price">18.90 KM <s>39.90 KM</s></p>
+            <div class="p-card__actions p-card__actions--m"><button class="btn btn--outline" data-cart data-added="Dodano"><span data-icon="basket"></span> Dodaj u Korpu</button></div>
+          </article>
+          <article class="p-card p-card--quick">
+            <div class="p-card__media"><img class="p-card__cover" src="assets/03-novo-cover-2.png" alt="">
+              <div class="badges"><span class="badge badge--red">15%</span><span class="badge badge--navy">10%<small>Za 3</small></span></div>
+              <div class="quick-actions"><button class="icon-circle icon-circle--heart" data-icon="heartline"></button><button class="icon-circle icon-circle--basket" data-icon="basket"></button></div>
+            </div>
+            <h3 class="p-card__title"><span>Usta puna mora</span></h3><p class="p-card__author">Jurica Pavičić</p>
+            <p class="p-card__price">18.90 KM <s>39.90 KM</s></p>
+            <div class="p-card__actions p-card__actions--m"><button class="btn btn--outline" data-cart data-added="Dodano"><span data-icon="basket"></span> Dodaj u Korpu</button></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · REKLAMA + VIDEO ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="reklama">
+      <div class="wm" aria-hidden="true" data-wm="white"></div>
+      <img class="reklama__logo" src="assets/05-reklama-logo.png" alt="pismo">
+      <div class="reklama__word">Reklama</div>
+      <div class="reklama__deco"></div>
+    </div>
+    <div class="video__head section-head" style="justify-content:center">
+      <h2>Riječ - dvije o knjizi</h2>
+    </div>
+    <div class="video__row">
+      <img src="assets/05-video-phone-1.png" alt="">
+      <img src="assets/05-video-phone-2.png" alt="">
+      <img src="assets/05-video-phone-3.png" alt="">
+      <img src="assets/05-video-phone-4.png" alt="">
+      <img src="assets/05-video-phone-5.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · KNJIGA GODINE ============ -->
+<section class="kgodine">
+  <div class="container">
+    <div class="kgodine__ghost">Knjiga mjeseca!</div>
+    <div class="kgodine__inner">
+      <div class="kgodine__left">
+        <h2>Knjiga godine</h2>
+        <p>Svjetski klasik o samospoznaji i emocionalnoj zrelosti.<br>Otkriva zašto “teži put” često vodi ka najdubljem ispunjenju, stabilnosti i kvalitetnijim odnosima.</p>
+      </div>
+      <img class="kgodine__book" src="assets/06-put-book.png" alt="Put kojim se rjeđe ide">
+      <div class="kgodine__card">
+        <h3>Put kojim se rjeđe ide</h3>
+        <p class="kg-author">M. Scott Peck</p>
+        <p class="kg-price">18.90 KM <s>39.90 KM</s></p>
+        <button class="btn btn--outline" data-cart data-added="Dodano"><span data-icon="basket"></span> Dodaj u Korpu</button>
+        <button class="btn btn--outline">Detaljnije</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · KNJIGE ZA DJECU ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Knjige za djecu <img class="h-icon" src="assets/07-djeca-icon.png" alt=""></h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="djeca"></div>
+  </div>
+</section>
+
+<!-- ============ 08 · POPULARNA PSIHOLOGIJA ============ -->
+<section class="psiho band">
+  <div class="wm" aria-hidden="true" data-wm="navy"></div>
+  <img class="psiho__illo" src="assets/08-psiho-illo.png" alt="">
+  <div class="container">
+    <div class="section-head">
+      <h2>Popularna psihologija</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="psiho"></div>
+  </div>
+</section>
+
+<!-- ============ 09 · DARK BANNER + HISTORIJA BOSNE ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="darkbanner">
+      <img class="darkbanner__book" src="assets/09-dark-book.png" alt="Safari u Sarajevu">
+      <div class="darkbanner__txt">Sarajevski privatni detektiv mračne prošlosti, djelujući na rubovima zakona i podzemlja, po narudžbi bogate i ugledne Sarajke Anise, ulazi u potragu ne za bilo kojim vikend snajperistom – nego za onim koji je ubio njezinu tek rođenu bebu.</div>
+      <button class="btn btn--green darkbanner__btn">Pogledaj više!</button>
+    </div>
+    <div class="section-head">
+      <h2>Historija Bosne <img class="h-icon" src="assets/09-hist-icon.png" alt=""></h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="hist"></div>
+  </div>
+</section>
+
+<!-- ============ 10 · NAUČNA KNJIGA + USP ============ -->
+<section class="naucna doodle">
+  <div class="container">
+    <div class="section-head">
+      <h2>Naučna knjiga</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="naucna"></div>
+  </div>
+</section>
+<section class="usp">
+  <div class="container">
+    <div class="usp__grid">
+      <div class="usp__col">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round"/></svg>
+        <h4>Brza dostava</h4>
+        <p>Vaša narudžba stiže brzo i sigurno, uz pouzdane dostavne partnere širom Bosne i Hercegovine.</p>
+      </div>
+      <div class="usp__col">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 9.5h19" /><path d="M6 15l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Sigurno plaćanje</h4>
+        <p>Plaćanje je zaštićeno modernim sigurnosnim standardima, tako da kupujete potpuno bez brige.</p>
+      </div>
+      <div class="usp__col">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5" stroke-linejoin="round"/></svg>
+        <h4>Provjeren kvalitet</h4>
+        <p>Biramo izdavače i naslove koji zadovoljavaju visoke standarde kvaliteta od štampe do uveza.</p>
+      </div>
+      <div class="usp__col">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6l8-3Z" stroke-linejoin="round"/></svg>
+        <h4>Garancija povrata</h4>
+        <p>Ako niste zadovoljni, omogućavamo jednostavan i brz povrat proizvoda u jasno definisanom roku.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · KLASICI + POKLONI ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Klasici <img class="h-icon" src="assets/11-klasici-icon.png" alt=""></h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="klasici"></div>
+  </div>
+</section>
+<section class="pokloni doodle">
+  <div class="container">
+    <div class="section-head">
+      <h2>Pokloni <img class="h-icon" src="assets/11-pokloni-icon.png" alt=""></h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="card-row" data-row="pokloni"></div>
+  </div>
+</section>
+
+<!-- ============ 12 · FEATURED BOOK + KATEGORIJE ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Featured Book</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+  </div>
+  <div class="featured__stage">
+    <button class="featured__arrow featured__arrow--l"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="featured__arrow featured__arrow--r"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="featured__track">
+      <div class="featured__card featured__card--side">
+        <img class="featured__cover" src="assets/12-featured-cover.png" alt="">
+        <div class="featured__body">
+          <div class="featured__meta"><span class="chip">Beletristika</span></div>
+          <h3>Ime mi je Sarajevo</h3>
+          <p>Roman Ime mi je Sarajevo autorice Adriane Kuči smješta se u sam epicentar traumatične povijesti rata u Bosni i Hercegovini.</p>
+          <div class="featured__price">18.90 KM <s>39.90 KM</s></div>
+        </div>
+      </div>
+      <div class="featured__card">
+        <img class="featured__cover" src="assets/12-featured-cover.png" alt="Ime mi je Sarajevo">
+        <div class="featured__body">
+          <div class="featured__meta">
+            <span class="chip">Beletristika</span>
+            <span class="stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5l2.6 5.4 6 .8-4.3 4.2 1 6-5.3-2.6L6.4 20l1-6L3 9.7l6-.8L12 3.5Z"/></svg>
+            </span>
+            <span class="reviews">459 Reviews</span>
+          </div>
+          <h3>Ime mi je Sarajevo</h3>
+          <p>Roman Ime mi je Sarajevo autorice Adriane Kuči smješta se u sam epicentar traumatične povijesti rata u Bosni i Hercegovini – opsadu Sarajeva (1992.–1995.), jednu od najdužih opsada modernog doba.</p>
+          <div class="featured__price">18.90 KM <s>39.90 KM</s></div>
+          <div class="featured__actions">
+            <button class="btn btn--navy" data-cart data-added="Added"><span data-icon="basket"></span> Add to cart</button>
+            <button class="heart-btn" data-fav data-icon="heart"></button>
+            <button class="btn btn--outline-navy">Istraži ponudu</button>
+          </div>
+        </div>
+      </div>
+      <div class="featured__card featured__card--side">
+        <img class="featured__cover" src="assets/12-featured-cover.png" alt="">
+        <div class="featured__body">
+          <div class="featured__meta"><span class="chip">Beletristika</span></div>
+          <h3>Ime mi je Sarajevo</h3>
+          <p>Roman Ime mi je Sarajevo autorice Adriane Kuči smješta se u sam epicentar traumatične povijesti rata u Bosni i Hercegovini.</p>
+          <div class="featured__price">18.90 KM <s>39.90 KM</s></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-top:70px">
+    <div class="section-head">
+      <h2>Kategorije</h2>
+      <div class="kat__dots"><span class="on"></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="kat__stage">
+    <div class="container" style="overflow:visible">
+      <div class="kat__track">
+        <img src="assets/12-kat-1.png" alt="Umjetnost i fotografija">
+        <img src="assets/12-kat-2.png" alt="Biografije i memoari">
+        <img src="assets/12-kat-3.png" alt="Knjige za djecu">
+        <img src="assets/12-kat-4.png" alt="Kuharice">
+        <img src="assets/12-kat-5.png" alt="Historija">
+        <img src="assets/12-kat-6.png" alt="Literatura">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 · BLOG + NEWSLETTER ============ -->
+<section class="sec">
+  <div class="container">
+    <div class="section-head">
+      <h2>Blog</h2>
+      <a class="link-more" href="#">Saznaj više <span data-icon="arrow"></span></a>
+    </div>
+    <div class="blog__grid">
+      <article class="blog__main">
+        <img src="assets/13-blog-main.png" alt="">
+        <h3>“Godine tišine” – Novi domaći roman koji je rasprodan u prvom tiražu</h3>
+        <p>Savremeni roman o porodičnim odnosima i životu između dva grada već je izazvao veliko interesovanje čitalaca. Nakon rasprodanog prvog tiraža, novo izdanje je konačno dostupno u našoj knjižari.</p>
+      </article>
+      <div class="blog__list">
+        <article class="blog__item">
+          <img src="assets/13-blog-thumb-1.png" alt="">
+          <div>
+            <h4>Povratak sporog čitanja: Zašto se 2026. ponovo okrećemo knjigama koje traže vrijeme</h4>
+            <p>U vremenu brzog skrolanja, sve više čitalaca bira sporije i dublje čitanje. Trend je jasan — kvalitet ispred kvantiteta, a knjige koje traže pažnju ponovo su u fokusu.</p>
+          </div>
+        </article>
+        <article class="blog__item">
+          <img src="assets/13-blog-thumb-2.png" alt="">
+          <div>
+            <h4>Sajam knjige u Sarajevu: Najtraženiji naslovi ove godine</h4>
+            <p>Ovogodišnji Sajam knjige donio je veliki interes za domaće autore, istorijske romane i popularnu psihologiju. Izdvojili smo najprodavanije naslove koje čitaoci trenutno najviše traže.</p>
+          </div>
+        </article>
+        <article class="blog__item">
+          <img src="assets/13-blog-thumb-3.png" alt="">
+          <div>
+            <h4>Potpisivanje knjige u našoj knjižari ovog vikenda</h4>
+            <p>U subotu organizujemo druženje i potpisivanje knjige sa domaćim autorom. Posjetioci će imati priliku upoznati autora, razgovarati o njegovom radu i nabaviti potpisani primjerak najnovijeg romana.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="newsletter band">
+  <div class="wm" aria-hidden="true" data-wm="white"></div>
+  <div class="container">
+    <h2>Pretplatite se na naš<br> newsletter i primajte obavijesti<br> o najnovijim knjigama.</h2>
+    <div class="newsletter__form">
+      <input type="email" placeholder="Email">
+      <button>Prijavi se</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 · PISMO CARD + FOOTER ============ -->
+<section class="pcard band">
+  <div class="wm" aria-hidden="true" data-wm="navy"></div>
+  <div class="container">
+    <div class="section-head pcard__head">
+      <h2>Pismo card | Čitalački klub <img class="h-icon" src="assets/14-pcard-icon.png" alt=""></h2>
+    </div>
+    <div class="pcard__grid">
+      <div class="pcard__left">
+        <h3>Više od popusta!</h3>
+        <p>Pismo Card je čitalački klub za one koji žele više od same kupovine. Članovi ostvaruju 5% popusta na sve knjige, dodatne pogodnosti na odabrane naslove te redovne obavijesti o novim izdanjima i posebnim ponudama. Jednostavno, diskretno i prilagođeno istinskim ljubiteljima knjige.</p>
+        <button class="btn btn--outline-navy">Postani član Pismo Carda</button>
+      </div>
+      <div class="pcard__panel">
+        <img src="assets/14-pcard-cards.png" alt="Pismo Card">
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-l">Pismo.ba -&nbsp;&nbsp;© 2026 All Rights Reserved</div>
+    <div class="foot-r">Made with <span class="heart-red" data-icon="heart" style="width:18px;height:18px;display:inline-flex"></span></div>
+  </div>
+</footer>
+
+<script src="js/render.js?v=9"></script>
+<script src="js/interactions.js?v=9"></script>
+<script src="js/main.js?v=9"></script>
+</body>
+</html>

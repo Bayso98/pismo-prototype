@@ -1,0 +1,41 @@
+/* ============================================================
+   Bettoni — full static family, 3 optical sizes × 9 weights
+   Families: 'Bettoni Display' (hero/H1-H2), 'Bettoni Subhead'
+   (H3/buttons/nav/prices), 'Bettoni Text' (body/paragraphs).
+   Weights: 200 UltraLight · 300 Light · 350 Book · 400 Regular
+            500 Medium · 600 SemiBold · 700 Bold · 900 Black
+   ============================================================ */
+
+/* ---------- Bettoni Display ---------- */
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayUltraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayBook.woff2') format('woff2'); font-weight: 350; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-Display.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplaySemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Display'; src: url('../fonts/Bettoni-DisplayBlack.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+/* Optical "dark" cut for text on dark backgrounds (thickened hairlines) */
+@font-face { font-family: 'Bettoni Display Dark'; src: url('../fonts/Bettoni-DisplayRegularDark.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* ---------- Bettoni Subhead ---------- */
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadUltraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadBook.woff2') format('woff2'); font-weight: 350; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-Subhead.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadSemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead'; src: url('../fonts/Bettoni-SubheadBlack.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Subhead Dark'; src: url('../fonts/Bettoni-SubheadRegularDark.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* ---------- Bettoni Text ---------- */
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextUltraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextBook.woff2') format('woff2'); font-weight: 350; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-Text.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextSemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text'; src: url('../fonts/Bettoni-TextBlack.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Bettoni Text Dark'; src: url('../fonts/Bettoni-TextRegularDark.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }

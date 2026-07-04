@@ -1,0 +1,283 @@
+/* ============================================================
+   PISMO — mobile layout (< 768px), from the Figma mobile design
+   (PISMO-WEB-DESIGN · node 2777-47215, 393px frame).
+   Desktop (≥ 768px) is untouched: the fixed 1920px canvas keeps
+   scaling via body{zoom} exactly as before. This file only adds
+   a media-query layer over the same DOM.
+   ============================================================ */
+
+/* -- elements that exist only for mobile stay hidden on desktop -- */
+.hdr-burger, .hero__arrow, .mobile-menu, .p-card__actions--m { display: none; }
+
+@media (max-width: 767px) {
+
+  /* ---------- base ---------- */
+  body { width: auto; min-width: 0; font-size: 17px; }
+  .container { width: auto; padding: 0 20px; }
+  .sec { padding: 30px 0; }
+
+  /* ---------- 01 · header ---------- */
+  .header-bar { height: 72px; }
+  .header-bar .container { gap: 14px; width: 100%; }
+  .hdr-burger {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; color: var(--navy); flex: none;
+  }
+  .hdr-burger svg { width: 30px; height: 30px; }
+  .header-logo { height: 34px; }
+  .hdr-menu, .hdr-search, .hdr-kreiraj { display: none; }
+  .hdr-prijava {
+    background: none; border: 0; height: auto; padding: 0; border-radius: 0;
+    font-size: 19px; margin-left: auto; order: 5;   /* design: Prijava before the icons */
+  }
+  .hdr-prijava:hover { background: none; }
+  .hdr-icons { gap: 18px; order: 6; }
+  .hdr-icons svg { width: 27px; height: 27px; }
+
+  .header-nav { height: 56px; }
+  .header-nav .container {
+    gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; width: 100%;
+  }
+  .header-nav .container::-webkit-scrollbar { display: none; }
+  .header-nav a { font-size: 17px; white-space: nowrap; }
+  .header-nav a.is-active { padding: 6px 16px; }
+
+  /* burger dropdown */
+  .site-header.menu-open .mobile-menu { display: flex; }
+  .mobile-menu {
+    flex-direction: column; gap: 4px;
+    background: var(--white); border-bottom: 1px solid var(--border);
+    padding: 16px 20px 20px;
+    box-shadow: 0 18px 30px rgba(14, 53, 75, .12);
+  }
+  .mobile-menu .hdr-search--m {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--light); height: 48px; border-radius: 999px;
+    padding: 0 20px; color: #636363; margin-bottom: 10px;
+  }
+  .mobile-menu .hdr-search--m input {
+    flex: 1; border: 0; background: none; outline: none;
+    font-family: var(--f-text); font-size: 17px; color: var(--slate);
+  }
+  .mobile-menu .hdr-search--m svg { width: 20px; height: 20px; }
+  .mobile-menu > a {
+    font-family: var(--f-subhead); font-weight: 500; font-size: 19px;
+    color: var(--navy); padding: 9px 2px; border-bottom: 1px solid #f1f3f4;
+  }
+  .mobile-menu .hdr-kreiraj--m {
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 14px; background: var(--navy); color: #ecf0f1;
+    height: 50px; border-radius: 999px;
+    font-family: var(--f-text); font-weight: 500; font-size: 18px;
+  }
+
+  /* ---------- 02 · hero ---------- */
+  .hero { padding: 0 0 14px; }
+  .hero .container { padding: 0; }
+  .hero__banner { height: 205px; border-radius: 0; box-shadow: none; }
+  /* the banners' baked-in titles sit on the left third — bias the crop there */
+  .hero__slide { background-position: 18% center; }
+  .hero__thumbs { display: none; }
+  .hero__arrow {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(255, 255, 255, .92); color: var(--navy);
+    box-shadow: 0 4px 14px rgba(14, 53, 75, .25);
+  }
+  .hero__arrow svg { width: 18px; height: 18px; }
+  .hero__arrow--l { left: 10px; }
+  .hero__arrow--r { right: 10px; }
+
+  /* ---------- section heads ---------- */
+  .section-head {
+    flex-direction: column; align-items: flex-start; gap: 12px;
+    margin-bottom: 22px;
+  }
+  .section-head h2 { font-size: 31px; gap: 10px; }
+  .section-head h2 img.h-icon { height: 30px; }
+  .link-more { font-size: 19px; }
+  .link-more svg { width: 22px; height: 17px; }
+  .sec-intro { font-size: 17px !important; margin: -8px 0 22px !important; }
+  .video__head h2 { width: 100%; text-align: center; justify-content: center; }
+  .kat__dots { align-self: flex-end; margin-top: -22px; }
+
+  /* ---------- product cards: 2-column grid, 4 shown ---------- */
+  .card-row, .card-row[data-row] {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 30px 15px;
+    overflow: visible; padding: 0; margin: 0;
+  }
+  .card-row .p-card:nth-child(n+5) { display: none; }
+  .row-arrow { display: none; }
+  .p-card { width: auto; }
+  .p-card__media { width: 100%; height: auto; aspect-ratio: 270 / 380; }
+
+  /* badges sit inside the cover on mobile (no overhang, no ribbon fold) */
+  .badges { top: 8px; right: 8px; gap: 6px; }
+  .badge::after { display: none; }
+  .badge--red { font-size: 15px; padding: 3px 10px; }
+  .badge--navy { font-size: 14px; padding: 5px 8px; }
+  .badge--navy small { font-size: 13px; }
+  .badge-tip { display: none; }        /* hover tooltips are a desktop affordance */
+
+  /* heart floats over the cover's top-left (design), cart button full width */
+  .heart-btn {
+    position: absolute; top: 10px; left: 10px; z-index: 3;
+    width: 42px; height: 42px; border: 0;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .14);
+  }
+  .heart-btn svg { width: 20px; height: 20px; }
+  .p-card__actions { margin-top: 14px; }
+  .p-card__actions .btn--outline {
+    flex: 1; width: 100%; height: 46px; font-size: 16.5px; padding: 0 12px;
+  }
+  .p-card__actions--m { display: flex; }
+
+  /* quick cards: keep only the heart circle, moved top-left like the design */
+  .p-card--quick .quick-actions {
+    top: 10px; left: 10px; right: auto; bottom: auto;
+  }
+  .p-card--quick .quick-actions .icon-circle--basket { display: none; }
+  .p-card--quick .quick-actions .icon-circle--heart {
+    width: 42px; height: 42px; background: rgba(255, 255, 255, .92);
+  }
+
+  .p-card__title {
+    font-size: 17.5px; margin-top: 12px;
+    height: 44px; line-height: 22px;
+  }
+  .p-card__author { font-size: 15px; margin-top: 2px; min-height: 22px; }
+  .p-card__price { font-size: 17px; margin-top: 6px; }
+  .p-card__price s { font-size: 14.5px; margin-left: 7px; }
+
+  /* ---------- 04 · najprodavanje ---------- */
+  .best__grid { display: block; }
+  .best__feature { width: 100%; height: 350px; border-radius: 18px; }
+  .bf-heading { left: 22px; top: 22px; width: 64%; font-size: 18px; line-height: 1.4; }
+  .bf-shape { left: -60px; top: -30px; width: 250px; height: 500px; }
+  .bf-book { left: auto; right: 26px; top: 108px; width: 132px; height: 219px; }
+  .bf-btn { left: 22px; top: auto; bottom: 22px; height: 46px; font-size: 18px; padding: 0 20px; }
+  .best__carousel { overflow: visible; padding: 0; margin: 26px 0 0; }
+  .best__track { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 15px; }
+  .best__track .p-card { flex: none; }
+  .best__track .p-card:nth-child(n+3) { display: none; }
+
+  /* ---------- 05 · reklama + video ---------- */
+  .reklama { height: 120px; margin-bottom: 44px; border-radius: 16px; }
+  .reklama__logo { height: 18px; }
+  .reklama__word { font-size: 30px; }
+  .reklama__deco { right: 24px; transform: translateY(-50%) scale(.6); }
+  .video__row {
+    justify-content: flex-start; gap: 16px; margin-top: 26px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding-bottom: 6px;
+  }
+  .video__row::-webkit-scrollbar { display: none; }
+  .video__row img { width: 200px; flex: none; }
+
+  /* ---------- 06 · knjiga godine ---------- */
+  .kgodine { padding: 30px 0 36px; }
+  .kgodine__ghost { font-size: 92px; letter-spacing: -1px; top: 210px; left: 0; transform: none; }
+  .kgodine__inner {
+    flex-direction: column; align-items: stretch; gap: 20px; min-height: 0;
+  }
+  .kgodine__left { width: auto; }
+  .kgodine__left h2 { font-size: 32px; }
+  .kgodine__left p { font-size: 18px; margin-top: 14px; max-width: none; }
+  .kgodine__book { height: auto; width: 74%; max-width: 300px; align-self: center; margin: 8px 0; }
+  .kgodine__card { width: 100%; padding: 22px 20px; }
+  .kgodine__card h3 { font-size: 23px; white-space: normal; }
+  .kgodine__card .kg-author { font-size: 18px; }
+  .kgodine__card .kg-price { font-size: 21px; }
+  .kgodine__card .btn { height: 50px; font-size: 18px; }
+
+  /* ---------- 08 · psihologija band ---------- */
+  .psiho { padding: 34px 0 40px; }
+  .psiho__illo { width: 96px; right: 12px; top: 14px; }
+
+  /* ---------- 09 · dark banner (not present in the mobile design) ---------- */
+  .darkbanner { display: none; }
+
+  /* ---------- 10 · naučna / pokloni doodle bands + USP ---------- */
+  .naucna, .pokloni { padding: 34px 0 40px; }
+  .naucna::before, .pokloni::before { background-size: 900px auto; }
+  .usp { padding: 34px 0; }
+  .usp__grid { flex-direction: column; gap: 26px; }
+  .usp__col { width: auto; display: grid; grid-template-columns: 36px 1fr; column-gap: 14px; }
+  .usp__col svg { width: 30px; height: 30px; align-self: center; }
+  .usp__col h4 { margin: 0; align-self: center; font-size: 21px; }
+  .usp__col p { grid-column: 1 / -1; margin-top: 10px; font-size: 16px; }
+
+  /* ---------- 12 · featured book ---------- */
+  .featured__track { display: block; padding: 0 20px; }
+  .featured__card--side { display: none; }
+  .featured__card {
+    flex: none; width: 100%; padding: 20px; gap: 16px; align-items: flex-start;
+  }
+  .featured__cover { width: 37%; }
+  .featured__meta { gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .chip { font-size: 14px; padding: 6px 14px; }
+  .stars svg { width: 16px; height: 16px; }
+  .reviews { font-size: 15px; }
+  .featured__body h3 { font-size: 23px; }
+  .featured__body p {
+    font-size: 15px; margin: 10px 0 12px;
+    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .featured__price { font-size: 20px; margin-bottom: 14px; }
+  .featured__price s { font-size: 15px; }
+  .featured__actions { flex-wrap: wrap; gap: 12px; }
+  .featured__actions .btn--navy { flex: 1; height: 48px; font-size: 16px; padding: 0 14px; }
+  .featured__actions .heart-btn { position: static; width: 48px; height: 48px; border: 1.5px solid var(--border); background: var(--white); box-shadow: none; flex: none; }
+  .featured__actions .btn--outline-navy { flex-basis: 100%; height: 48px; font-size: 16px; }
+  .featured__arrow { width: 42px; height: 42px; }
+  .featured__arrow--l { left: 6px; }
+  .featured__arrow--r { right: 6px; }
+
+  /* ---------- 12 · kategorije ---------- */
+  .container[style*="margin-top"] { margin-top: 34px !important; }
+  .kat__stage { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .kat__stage::-webkit-scrollbar { display: none; }
+  .kat__track { width: max-content; padding-right: 20px; }
+  .kat__track img { flex: 0 0 300px; height: 165px; }
+
+  /* ---------- 13 · blog ---------- */
+  .blog__grid { flex-direction: column; gap: 26px; }
+  .blog__main { flex: none; width: 100%; }
+  .blog__main img { height: 225px; }
+  .blog__main h3 { font-size: 22px; margin: 16px 0 10px; }
+  .blog__main p { font-size: 16px; }
+  .blog__list { gap: 18px; }
+  .blog__item { gap: 14px; align-items: flex-start; }
+  .blog__item img { flex: 0 0 122px; height: 112px; }
+  .blog__item h4 { font-size: 16.5px; margin-bottom: 6px; }
+  .blog__item p {
+    font-size: 14px; line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* ---------- 13 · newsletter ---------- */
+  .newsletter { padding: 40px 0 46px; margin-top: 26px; }
+  .newsletter .container { flex-direction: column; align-items: stretch; gap: 24px; }
+  .newsletter h2 { font-size: 26px; }
+  .newsletter h2 br { display: none; }
+  .newsletter__form { gap: 12px; }
+  .newsletter__form input { flex: 1; width: auto; min-width: 0; height: 52px; padding: 0 22px; font-size: 17px; }
+  .newsletter__form button { height: 52px; padding: 0 24px; font-size: 17px; flex: none; }
+
+  /* ---------- 14 · pismo card + footer ---------- */
+  .pcard { padding: 34px 0 46px; }
+  .pcard__head { margin-bottom: 24px; }
+  .pcard__grid { flex-direction: column-reverse; gap: 26px; }
+  .pcard__left { width: auto; }
+  .pcard__left h3 { font-size: 26px; margin-bottom: 14px; }
+  .pcard__left p { font-size: 17px; margin-bottom: 22px; }
+  .pcard__left .btn { height: 50px; font-size: 17px; }
+  .pcard__panel { width: 100%; height: auto; padding: 26px 18px; }
+  .pcard__panel img { width: 100%; max-width: 420px; }
+
+  .site-footer .container { flex-direction: column; gap: 8px; text-align: center; }
+}

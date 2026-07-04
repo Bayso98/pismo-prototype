@@ -1,0 +1,373 @@
+/* ============================================================
+   PISMO — design tokens + base + shared components
+   Canvas: 1920px design width · content 1620px · margins 150px
+   ============================================================ */
+
+:root {
+  /* Color */
+  --navy: #0e354b;          /* headings, logo, badges, dark buttons, navy bands */
+  --slate: #34495e;         /* nav bar bg, body text, authors */
+  --teal: #1c7c87;          /* links, card actions, basket circles */
+  --green: #16a085;         /* strike prices, green CTA, footer text */
+  --red: #ff4a4a;           /* discount badge */
+  --orange: #ff7a00;        /* rating stars */
+  --light: #ecf0f1;         /* search bg, light pills, featured card bg */
+  --gray-bg: #f3f3f3;       /* gray section band */
+  --usp-bg: #f7f9f9;        /* USP band */
+  --border: #e6e6e6;        /* outline button / card borders */
+  --heart-gray: #c6c6c6;    /* inactive heart */
+  --fav-red: #ff2f2f;       /* favorited heart + ring */
+  --fav-coral: #ff6e6e;     /* heart hover (preview) */
+  --dark: #222122;          /* dark promo banner */
+  --white: #ffffff;
+
+  /* Type */
+  --f-display: 'Bettoni Display', Georgia, serif;
+  --f-subhead: 'Bettoni Subhead', Georgia, serif;
+  --f-text: 'Bettoni Text', Georgia, serif;
+  --f-sans: 'Quicksand', 'Avenir Next', 'Trebuchet MS', sans-serif; /* footer micro-copy only */
+
+  /* Layout */
+  --content-w: 1620px;
+  --card-w: 270px;
+  --card-gap: 67.5px;
+  --radius-card: 10px;
+  --radius-banner: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  overflow-x: hidden;                 /* clip the design edge on narrow screens */
+}
+
+/* The design is authored at a fixed 1920px canvas. js/main.js sets
+   `body { zoom }` so the whole page scales to fit the viewport width on any
+   laptop/screen without horizontal scroll, while preserving exact proportions
+   and the sticky header. */
+body {
+  width: 1920px;
+  background: var(--white);
+  font-family: var(--f-text);
+  font-weight: 400;
+  color: var(--slate);
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font: inherit; border: 0; background: none; cursor: pointer; }
+ul { list-style: none; }
+
+.container { width: var(--content-w); margin: 0 auto; }
+
+/* ---------- Section header row (heading + "Saznaj više →") ---------- */
+.section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 36px;
+}
+.section-head h2 {
+  font-family: var(--f-display); font-weight: 700; font-size: 44px;
+  color: var(--navy); display: flex; align-items: center; gap: 16px;
+}
+.section-head h2 img.h-icon { height: 44px; width: auto; }
+
+.link-more {
+  font-family: var(--f-subhead); font-weight: 500; font-size: 22px;
+  color: var(--teal); display: inline-flex; align-items: center; gap: 12px;
+}
+.link-more svg { width: 26px; height: 20px; }
+
+/* Arrow icon markup helper:
+<a class="link-more" href="#">Saznaj više
+  <svg viewBox="0 0 26 20" fill="none"><path d="M1 10h23M16 2l8 8-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a> */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--f-subhead); font-weight: 600; font-size: 20px;
+  border-radius: 14px; height: 56px; padding: 0 28px; white-space: nowrap;
+}
+.btn--navy  { background: var(--navy); color: var(--white); }
+.btn--light { background: var(--light); color: var(--navy); }
+.btn--green { background: var(--green); color: var(--white); border-radius: 28px; }
+.btn--outline {
+  background: var(--white); color: var(--teal);
+  border: 1.5px solid var(--border); border-radius: 28px;
+}
+.btn--outline-navy {
+  background: transparent; color: var(--navy);
+  border: 1.5px solid var(--navy); border-radius: 28px;
+}
+.btn svg { width: 20px; height: 20px; }
+
+/* Basket icon markup helper (matches design's shopping-basket):
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9h13l-1.2 9.2a2 2 0 0 1-2 1.8H8.7a2 2 0 0 1-2-1.8L5.5 9Z"/><path d="M3 9h18"/><path d="M9 9l2.6-5M15 9l-2.6-5"/><path d="M9.5 13v3M14.5 13v3"/></svg> */
+
+/* Heart icon helper:
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2 0 3.6 1 4.6 2.6.2.4.9.4 1.1 0 1-1.6 2.7-2.6 4.7-2.6 3.6 0 5.7 3.5 4.2 7.2C18.5 16.3 12 21 12 21Z"/></svg> */
+
+/* ---------- Product card (canonical) ----------
+   Default variant = cover + badges, then title/author/price,
+   then action row ("Dodaj u Korpu" + heart).
+   Hover variant (class p-card--quick) = circle heart + basket
+   stacked on the cover's bottom-right, NO action row. */
+.p-card { width: var(--card-w); position: relative; }
+
+.p-card__media {
+  position: relative; width: var(--card-w); height: 380px;
+  border-radius: var(--radius-card);
+}
+.p-card__media img.p-card__cover {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 14px rgba(14, 53, 75, .10);
+}
+
+/* Discount badges — overhang the cover's top-right corner */
+.badges { position: absolute; top: -15px; right: -27px; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; z-index: 2; }
+.badge {
+  font-family: var(--f-subhead); font-weight: 700; text-align: center;
+  color: var(--white); border-radius: 6px; position: relative;
+}
+.badge--red { background: var(--red); font-size: 20px; padding: 4px 12px; }
+.badge--navy { background: var(--navy); font-size: 19px; line-height: 1.15; padding: 6px 10px; }
+.badge--navy small { display: block; font-size: 17px; font-weight: 600; }
+/* ribbon fold under badges */
+.badge::after {
+  content: ''; position: absolute; right: 0; top: 100%;
+  border: 5px solid transparent;
+}
+.badge--red::after { border-top-color: #c23636; border-left-color: #c23636; }
+.badge--navy::after { border-top-color: #071e2b; border-left-color: #071e2b; }
+
+/* ---------- discount badge hover tooltip ---------- */
+.badge { cursor: help; }
+.badge-tip {
+  position: absolute; top: calc(100% + 16px); right: -6px;
+  width: 252px; background: var(--white); border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(14, 53, 75, .24);
+  text-align: left; overflow: hidden; font-weight: 400;
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  z-index: 40; pointer-events: none;
+}
+.badge:hover .badge-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+/* upward pointer aimed at the badge */
+.badge-tip::before {
+  content: ''; position: absolute; bottom: 100%; right: 20px;
+  border: 8px solid transparent; border-bottom-width: 9px;
+}
+.badge-tip--red::before  { border-bottom-color: var(--red); }
+.badge-tip--navy::before { border-bottom-color: var(--navy); }
+.badge-tip__head {
+  display: block; padding: 11px 16px; color: var(--white);
+  font-family: var(--f-subhead); font-weight: 700; font-size: 15px; line-height: 1.25;
+}
+.badge-tip--red .badge-tip__head  { background: var(--red); }
+.badge-tip--navy .badge-tip__head { background: var(--navy); }
+.badge-tip__body {
+  display: block; padding: 12px 16px 6px; color: var(--slate);
+  font-family: var(--f-text); font-size: 14px; line-height: 1.45;
+}
+.badge-tip__foot {
+  display: flex; align-items: center; gap: 6px; padding: 3px 16px 13px;
+  color: #8494a0; font-family: var(--f-text); font-size: 12.5px;
+}
+.badge-tip__foot svg { width: 16px; height: 16px; flex: none; }
+/* lift the hovered card so its tooltip floats above neighbouring cards */
+.p-card:hover { z-index: 20; }
+
+/* Title lives in a FIXED two-line slot: long names wrap to 2 lines (then
+   ellipsize), short names center vertically in the slot. Because the slot
+   height never changes — and the author line below is always reserved, even
+   when empty — authors, prices and buttons stay aligned across every card
+   in a row, whatever mix of short/long names it holds. */
+.p-card__title {
+  font-family: var(--f-subhead); font-weight: 600; font-size: 22px;
+  color: var(--navy); text-align: center; margin-top: 22px;
+  height: 56px; line-height: 28px;
+  display: flex; align-items: center; justify-content: center;
+}
+.p-card__title span {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.p-card__author {
+  font-family: var(--f-text); font-weight: 400; font-size: 19px;
+  color: var(--slate); text-align: center; margin-top: 4px;
+  min-height: 28px;                /* reserved even for author-less products */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  /* 1 line */
+}
+.p-card__price {
+  font-family: var(--f-subhead); font-weight: 700; font-size: 22px;
+  color: var(--navy); text-align: center; margin-top: 8px;
+}
+.p-card__price s {
+  font-weight: 500; font-size: 19px; color: var(--green);
+  margin-left: 10px; text-decoration-thickness: 1.5px;
+}
+
+.p-card__actions {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 20px;
+}
+.p-card__actions .btn--outline { height: 48px; font-size: 19px; padding: 0 22px; }
+
+.heart-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid var(--border); background: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--heart-gray);
+}
+.heart-btn svg { width: 22px; height: 22px; }
+
+/* Quick-action circles (hover variant) */
+.icon-circle {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.icon-circle--heart { background: var(--white); color: var(--heart-gray); }
+.icon-circle--basket { background: var(--teal); color: var(--white); }
+.icon-circle svg { width: 22px; height: 22px; }
+.p-card--quick .quick-actions {
+  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+/* ---------- Card row grid → arrow-paged slider ---------- */
+/* The row scrolls horizontally (scrollbar hidden); 46px top / 40px bottom of
+   breathing room is reserved via padding + matching negative margins so the
+   overhanging badges and the hover lift/shadow never get clipped. */
+.card-row { display: flex; gap: var(--card-gap); }
+.card-row[data-row] {
+  overflow-x: auto; scrollbar-width: none;
+  padding: 46px 0 40px; margin: -46px 0 -40px;
+}
+.card-row[data-row]::-webkit-scrollbar { display: none; }
+.card-row .p-card { flex: 0 0 var(--card-w); }
+
+.row-slider { position: relative; }
+.row-arrow {
+  position: absolute; top: 162px; z-index: 10;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--white); color: var(--navy);
+  box-shadow: 0 6px 20px rgba(14, 53, 75, .16);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .18s ease;
+}
+.row-arrow svg { width: 22px; height: 22px; }
+.row-arrow--l { left: -28px; }
+.row-arrow--r { right: -28px; }
+.row-arrow:hover { background: var(--navy); color: var(--white); }
+.row-arrow.is-off { opacity: 0; pointer-events: none; }
+
+/* ---------- "pismo" watermark pattern ----------
+   Usage: <div class="wm" aria-hidden="true" data-wm="navy|white"></div>
+   inside a position:relative section; main.js fills it with rows. */
+.wm {
+  position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  pointer-events: none; user-select: none;
+  font-family: var(--f-text); font-weight: 600; font-size: 14.5px;
+  line-height: 18.7px; white-space: nowrap; word-spacing: 4px;
+}
+/* full-strength colors — the edge→centre fade is applied per row by
+   fillWatermarks() via row opacity (matches the Figma pattern) */
+.wm[data-wm="navy"]  { color: #0e354b; }
+.wm[data-wm="white"] { color: #ffffff; }
+
+/* Content above watermark */
+.wm ~ * { position: relative; z-index: 1; }
+
+/* ============================================================
+   MICRO-INTERACTIONS  (hover / active / added / favorited)
+   Mirrors the Figma interaction states:
+   · Cart button: default → teal-border hover → check + "Dodano"
+   · Heart:       gray → coral + red ring hover → solid red active
+   ============================================================ */
+
+/* --- base transitions --- */
+.btn, .heart-btn, .icon-circle,
+.hdr-menu, .hdr-prijava, .hdr-kreiraj,
+.header-nav a, .featured__arrow, .kat__track img, .chip { transition: all .18s ease; }
+.p-card__cover { transition: transform .24s ease, box-shadow .24s ease; }
+.link-more svg { transition: transform .18s ease; }
+
+/* --- product card: lift the cover on hover --- */
+.p-card:hover .p-card__cover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(14, 53, 75, .20);
+}
+
+/* --- "Saznaj više" arrow nudges right --- */
+.link-more:hover { color: var(--navy); }
+.link-more:hover svg { transform: translateX(6px); }
+
+/* --- outline buttons (incl. cart) : teal border on hover --- */
+.btn--outline:hover { border-color: var(--teal); box-shadow: 0 6px 16px rgba(28, 124, 135, .16); }
+.btn--outline:active { transform: scale(.97); }
+.btn--outline-navy:hover { background: var(--navy); color: var(--white); }
+
+/* --- cart button "added" state: teal border, teal check + Dodano --- */
+.btn--outline.is-added { border-color: var(--teal); color: var(--teal); }
+/* the check draws itself in, and the label eases in — no bounce */
+.btn.is-added { animation: settle .28s ease; }
+.btn.is-added svg path {
+  stroke-dasharray: 40; stroke-dashoffset: 40;
+  animation: draw .42s .04s cubic-bezier(.65, 0, .35, 1) forwards;
+}
+@keyframes settle { from { opacity: .55; } to { opacity: 1; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* --- navy / green buttons --- */
+.btn--navy:hover, .hdr-kreiraj:hover { filter: brightness(1.14); box-shadow: 0 8px 20px rgba(14, 53, 75, .22); }
+.btn--navy:active, .btn--green:active { transform: scale(.97); }
+.btn--green:hover { filter: brightness(1.08); box-shadow: 0 8px 20px rgba(22, 160, 133, .28); }
+
+/* --- header pills / nav --- */
+.hdr-menu:hover, .hdr-prijava:hover { background: #e1e8ea; }
+.header-nav a:not(.is-active):hover { opacity: .78; }
+
+/* --- heart button: gray → coral(hover) → red(active) with red ring --- */
+.heart-btn, .icon-circle--heart {
+  transition: border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .14s ease;
+}
+.icon-circle--heart { border: 2px solid transparent; }
+.heart-btn:hover, .icon-circle--heart:hover {
+  border-color: var(--fav-red); color: var(--fav-coral);
+  box-shadow: 0 0 12px rgba(255, 47, 47, .45);
+}
+.heart-btn.is-fav, .icon-circle--heart.is-fav {
+  border-color: var(--fav-red); color: var(--fav-red);
+  box-shadow: 0 0 12px rgba(255, 47, 47, .40);
+}
+/* one-shot ring ripple on favorite — elegant, not bouncy */
+.heart-btn, .icon-circle--heart { position: relative; }
+.heart-btn::after, .icon-circle--heart::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 50%;
+  border: 2px solid var(--fav-red); opacity: 0; transform: scale(.7);
+  pointer-events: none;
+}
+.heart-btn.fav-burst::after, .icon-circle--heart.fav-burst::after {
+  animation: favRing .5s ease-out;
+}
+@keyframes favRing {
+  0%   { opacity: .5;  transform: scale(.7); }
+  100% { opacity: 0;   transform: scale(1.75); }
+}
+
+/* --- quick-action basket circle --- */
+.icon-circle--basket:hover { filter: brightness(1.1); }
+.icon-circle--basket.is-added-circle { background: var(--green); }
+.icon-circle:active { transform: scale(.9); }
+
+/* --- featured carousel arrows --- */
+.featured__arrow:hover { background: var(--navy); color: var(--white); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
