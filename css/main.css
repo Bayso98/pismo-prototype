@@ -136,16 +136,17 @@ ul { list-style: none; }
 .badge--red { background: var(--red); font-size: 20px; padding: 4px 12px; }
 .badge--navy { background: var(--navy); font-size: 19px; line-height: 1.15; padding: 6px 10px; }
 .badge--navy small { display: block; font-size: 17px; font-weight: 600; }
-/* speech-bubble tails under the badges (traced from the Figma badges).
-   They overlap 1.5px into the badge body so they can never detach at
-   fractional zoom (1.33× on a 27"). The red tail sits centre-left and is
-   painted over by the navy badge below it — exactly like the design. */
+/* speech-bubble tails under the badges. Both tails sit on the badge's INNER
+   side so they land on the product cover — the labels read as "snapped onto"
+   the book (per the design), never floating in the whitespace past its edge.
+   They overlap 1.5px into the badge body so they can't detach at fractional
+   zoom (1.33× on a 27"). The red tail tucks behind the navy badge below it. */
 .badge::after {
   content: ''; position: absolute; top: calc(100% - 1.5px);
   clip-path: polygon(0 0, 100% 0, 0 100%);  /* vertical left edge, tip ↓ left */
 }
-.badge--red::after  { left: 10px; width: 26px; height: 22px; background: var(--red); }
-.badge--navy::after { right: 4px; width: 32px; height: 18px; background: #071e2b; }
+.badge--red::after  { left: 8px; width: 22px; height: 18px; background: var(--red); }
+.badge--navy::after { left: 8px; width: 20px; height: 16px; background: #071e2b; }
 
 /* ---------- discount badge hover tooltip ---------- */
 .badge { cursor: help; }
