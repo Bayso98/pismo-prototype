@@ -136,14 +136,16 @@ ul { list-style: none; }
 .badge--red { background: var(--red); font-size: 20px; padding: 4px 12px; }
 .badge--navy { background: var(--navy); font-size: 19px; line-height: 1.15; padding: 6px 10px; }
 .badge--navy small { display: block; font-size: 17px; font-weight: 600; }
-/* ribbon fold under badges — overlaps 1.5px into the badge body so the tail
-   never detaches from it at fractional zoom levels (e.g. 1.33× on a 27") */
+/* speech-bubble tails under the badges (traced from the Figma badges).
+   They overlap 1.5px into the badge body so they can never detach at
+   fractional zoom (1.33× on a 27"). The red tail sits centre-left and is
+   painted over by the navy badge below it — exactly like the design. */
 .badge::after {
-  content: ''; position: absolute; right: 0; top: calc(100% - 1.5px);
-  border: 5px solid transparent;
+  content: ''; position: absolute; top: calc(100% - 1.5px);
+  clip-path: polygon(0 0, 100% 0, 0 100%);  /* vertical left edge, tip ↓ left */
 }
-.badge--red::after { border-top-color: #c23636; border-left-color: #c23636; }
-.badge--navy::after { border-top-color: #071e2b; border-left-color: #071e2b; }
+.badge--red::after  { left: 10px; width: 26px; height: 22px; background: var(--red); }
+.badge--navy::after { right: 4px; width: 32px; height: 18px; background: #071e2b; }
 
 /* ---------- discount badge hover tooltip ---------- */
 .badge { cursor: help; }
