@@ -12,7 +12,9 @@
 @media (max-width: 767px) {
 
   /* ---------- base ---------- */
-  body { width: auto; min-width: 0; font-size: 17px; }
+  /* overflow-x: clip — hard-stops sideways panning on iOS without creating
+     a scroll container (unlike `hidden`, it keeps the sticky header working) */
+  body { width: auto; min-width: 0; font-size: 17px; overflow-x: clip; }
   .container { width: auto; padding: 0 20px; }
   .sec { padding: 30px 0; }
 
@@ -103,9 +105,11 @@
   .video__head h2 { width: 100%; text-align: center; justify-content: center; }
   .kat__dots { align-self: flex-end; margin-top: -22px; }
 
-  /* ---------- product cards: 2-column grid, 4 shown ---------- */
+  /* ---------- product cards: 2-column grid, 4 shown ----------
+     minmax(0,1fr): lets cells shrink below nowrap text (long author names
+     ellipsize instead of blowing the page width past the viewport) */
   .card-row, .card-row[data-row] {
-    display: grid; grid-template-columns: repeat(2, 1fr);
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px 15px;
     overflow: visible; padding: 0; margin: 0;
   }
@@ -161,7 +165,7 @@
   .bf-book { left: auto; right: 26px; top: 108px; width: 132px; height: 219px; }
   .bf-btn { left: 22px; top: auto; bottom: 22px; height: 46px; font-size: 18px; padding: 0 20px; }
   .best__carousel { overflow: visible; padding: 0; margin: 26px 0 0; }
-  .best__track { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 15px; }
+  .best__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 15px; }
   .best__track .p-card { flex: none; }
   .best__track .p-card:nth-child(n+3) { display: none; }
 
@@ -176,7 +180,7 @@
     padding-bottom: 6px;
   }
   .video__row::-webkit-scrollbar { display: none; }
-  .video__row img { width: 200px; flex: none; }
+  .video__row .reel { width: 200px; flex: none; }
 
   /* ---------- 06 · knjiga godine ---------- */
   .kgodine { padding: 30px 0 36px; }
@@ -203,7 +207,8 @@
 
   /* ---------- 10 · naučna / pokloni doodle bands + USP ---------- */
   .naucna, .pokloni { padding: 34px 0 40px; }
-  .naucna::before, .pokloni::before { background-size: 900px auto; }
+  .naucna::before { background-size: 900px auto; }
+  .pokloni::before { background-size: 470px auto; }
   .usp { padding: 34px 0; }
   .usp__grid { flex-direction: column; gap: 26px; }
   .usp__col { width: auto; display: grid; grid-template-columns: 36px 1fr; column-gap: 14px; }

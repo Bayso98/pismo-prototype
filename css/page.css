@@ -201,9 +201,56 @@
 .video__row {
   display: flex; justify-content: center; gap: 42px; margin-top: 40px;
 }
-.video__row img { width: 236px; height: auto; border-radius: 4px; }
 .video__head { text-align: center; }
 .video__head h2 { justify-content: center; }
+
+/* Facebook-Reel facade: the REAL video cover (from the reel's public embed
+   page) sits inside the design phone frame; on click the FB player is
+   injected into the same screen area (bezel + nav bar stay visible). */
+.reel { position: relative; flex: none; width: 236px; cursor: pointer; }
+.reel img { width: 100%; height: auto; border-radius: 4px; display: block; }
+.reel { transition: transform .25s ease, filter .25s ease; }
+.reel:hover { transform: translateY(-6px); filter: brightness(1.06); }
+.reel.is-playing { transform: none; filter: none; cursor: default; }
+/* black backdrop over the frame's baked screen — any hairline gap around the
+   poster then reads as phone bezel instead of the old teal artwork */
+.reel::before {
+  content: ''; position: absolute; z-index: 1;
+  left: 1%; top: 0.4%; width: 98%; height: 90.6%;
+  background: #000; border-radius: 26px 26px 0 0;
+}
+/* real video cover, filling the phone's screen above the nav bar.
+   (selector must out-rank `.reel img`, which sets width:100%/radius 4px) */
+.reel img.reel__poster {
+  position: absolute; left: 2.2%; top: 1.2%; z-index: 1;
+  width: 95.6%; height: 89.9%; object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+/* design-style play button over the cover */
+.reel__play {
+  position: absolute; left: 50%; top: 43%; transform: translate(-50%, -50%);
+  z-index: 2; width: 62px; height: 62px; border-radius: 50%;
+  border: 3px solid #fff; background: rgba(14, 53, 75, .28);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; pointer-events: none;
+  transition: transform .25s ease, background .25s ease;
+}
+.reel__play svg { width: 26px; height: 26px; margin-left: 3px; }
+.reel:hover .reel__play { transform: translate(-50%, -50%) scale(1.08); background: rgba(14, 53, 75, .45); }
+.reel.is-playing .reel__play { display: none; }
+.reel__frame {
+  position: absolute; left: 2.6%; right: 2.6%; top: 1.7%; bottom: 9.4%;
+  width: 94.8%; height: 88.9%; border: 0; z-index: 2;
+  border-radius: 10px 10px 0 0; background: #000;
+}
+.reel__close {
+  position: absolute; top: 4.2%; right: 6%; z-index: 3;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(0,0,0,.65); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; line-height: 1;
+}
+.reel__close:hover { background: rgba(0,0,0,.9); }
 
 /* ---------------- 06 · KNJIGA GODINE ---------------- */
 .kgodine { position: relative; padding: 26px 0 30px; overflow: hidden; background: #fff; }
@@ -291,7 +338,12 @@
 }
 .doodle > * { position: relative; z-index: 1; }
 .naucna::before { background-image: url('../assets/10-naucna-bg.png'); background-size: 1920px auto; }
-.pokloni::before { background-image: url('../assets/11-pokloni-bg.png'); background-size: 1920px auto; }
+/* seamless 694px gift-doodle tile rebuilt from the design (ink already at
+   design faintness — don't dim it further with the shared .doodle opacity) */
+.pokloni::before {
+  background-image: url('../assets/11-pokloni-bg.png?v=3');
+  background-size: 694px auto; opacity: 1;
+}
 .naucna { background: #fff; padding: 56px 0 64px; }
 .pokloni { background: #fffdf7; padding: 56px 0 64px; }
 

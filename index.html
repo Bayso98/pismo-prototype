@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pismo — Online Knjižara</title>
-  <link rel="stylesheet" href="css/fonts.css?v=9">
-  <link rel="stylesheet" href="css/main.css?v=9">
-  <link rel="stylesheet" href="css/page.css?v=9">
-  <link rel="stylesheet" href="css/mobile.css?v=9">
+  <link rel="stylesheet" href="css/fonts.css?v=14">
+  <link rel="stylesheet" href="css/main.css?v=14">
+  <link rel="stylesheet" href="css/page.css?v=14">
+  <link rel="stylesheet" href="css/mobile.css?v=14">
 </head>
 <body>
 
@@ -169,14 +169,33 @@
       <div class="reklama__deco"></div>
     </div>
     <div class="video__head section-head" style="justify-content:center">
-      <h2>Riječ - dvije o knjizi</h2>
+      <h2>Pogledajte naše preporuke</h2>
     </div>
+    <!-- Facebook-Reel facade: each phone shows the REAL video cover (pulled
+         from the reel's public embed page) inside the design phone frame;
+         clicking swaps in the FB player. Nothing loads from Facebook until
+         the user asks for it. Reel ids + covers come from pismo.ba's feed. -->
     <div class="video__row">
-      <img src="assets/05-video-phone-1.png" alt="">
-      <img src="assets/05-video-phone-2.png" alt="">
-      <img src="assets/05-video-phone-3.png" alt="">
-      <img src="assets/05-video-phone-4.png" alt="">
-      <img src="assets/05-video-phone-5.png" alt="">
+      <div class="reel" data-reel="923793597057011" role="button" tabindex="0" aria-label="Pusti video: Historija Bosne koju je čitala i Margaret Tačer">
+        <img src="assets/05-video-phone-1.png" alt="" aria-hidden="true">
+        <img class="reel__poster" src="assets/05-reel-1.jpg" alt="Historija Bosne koju je čitala i Margaret Tačer!">
+        <span class="reel__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.5v13l11-6.5-11-6.5Z"/></svg></span>
+      </div>
+      <div class="reel" data-reel="26002070229449568" role="button" tabindex="0" aria-label="Pusti video: Najljepša knjiga o bosanskim muslimanima XX stoljeća">
+        <img src="assets/05-video-phone-1.png" alt="" aria-hidden="true">
+        <img class="reel__poster" src="assets/05-reel-2.jpg" alt="Najljepša knjiga o bosanskim muslimanima XX stoljeća">
+        <span class="reel__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.5v13l11-6.5-11-6.5Z"/></svg></span>
+      </div>
+      <div class="reel" data-reel="2681389142218462" role="button" tabindex="0" aria-label="Pusti video: Kako pamćenje određuje naciju?">
+        <img src="assets/05-video-phone-1.png" alt="" aria-hidden="true">
+        <img class="reel__poster" src="assets/05-reel-3.jpg" alt="Kako pamćenje određuje naciju?">
+        <span class="reel__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.5v13l11-6.5-11-6.5Z"/></svg></span>
+      </div>
+      <div class="reel" data-reel="765414026152695" role="button" tabindex="0" aria-label="Pusti video: Ko su Mladi muslimani?">
+        <img src="assets/05-video-phone-1.png" alt="" aria-hidden="true">
+        <img class="reel__poster" src="assets/05-reel-4.jpg" alt="Ko su Mladi muslimani?">
+        <span class="reel__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.5v13l11-6.5-11-6.5Z"/></svg></span>
+      </div>
     </div>
   </div>
 </section>
@@ -451,8 +470,8 @@
   </div>
 </footer>
 
-<script src="js/render.js?v=9"></script>
-<script src="js/interactions.js?v=9"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/render.js?v=14"></script>
+<script src="js/interactions.js?v=14"></script>
+<script src="js/main.js?v=14"></script>
 </body>
 </html>

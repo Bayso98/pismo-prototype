@@ -66,6 +66,47 @@ window.addEventListener('load', fillWatermarks);
   if (m) go(Number(m[1]));
 })();
 
+// ---- Facebook-Reel facade ("Riječ - dvije o knjizi") ----
+// Nothing loads from Facebook until a phone is clicked; then the FB player
+// is injected into that phone's screen. One reel plays at a time; ✕ stops it.
+(function () {
+  const SRC = (id) =>
+    'https://www.facebook.com/plugins/video.php?href=' +
+    encodeURIComponent(`https://www.facebook.com/reel/${id}/`) +
+    '&show_text=false&autoplay=1&width=280&height=500';
+  let active = null;
+  function stop(reel) {
+    reel.querySelector('.reel__frame')?.remove();
+    reel.querySelector('.reel__close')?.remove();
+    reel.classList.remove('is-playing');
+    if (active === reel) active = null;
+  }
+  function play(reel) {
+    if (reel.classList.contains('is-playing')) return;
+    if (active) stop(active);
+    const f = document.createElement('iframe');
+    f.className = 'reel__frame';
+    f.src = SRC(reel.dataset.reel);
+    f.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('title', 'Pismo video preporuka');
+    const x = document.createElement('button');
+    x.className = 'reel__close';
+    x.setAttribute('aria-label', 'Zaustavi video');
+    x.textContent = '✕';
+    x.addEventListener('click', (e) => { e.stopPropagation(); stop(reel); });
+    reel.append(f, x);
+    reel.classList.add('is-playing');
+    active = reel;
+  }
+  document.querySelectorAll('.reel[data-reel]').forEach((reel) => {
+    reel.addEventListener('click', () => play(reel));
+    reel.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(reel); }
+    });
+  });
+})();
+
 // ---- Mobile burger: toggles the dropdown menu under the header ----
 (function () {
   const burger = document.querySelector('.hdr-burger');
