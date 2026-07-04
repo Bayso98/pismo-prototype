@@ -167,7 +167,7 @@
    sideways bleed. Robust across all zoom levels. */
 .best__carousel {
   overflow-x: auto; scrollbar-width: none;
-  padding: 46px 0 40px; margin: -46px 0 -40px;
+  padding: 46px 34px 40px 0; margin: -46px -34px -40px 0;
 }
 .best__carousel::-webkit-scrollbar { display: none; }
 .best__grid > .row-slider { flex: 1; min-width: 0; }

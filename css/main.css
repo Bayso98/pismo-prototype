@@ -249,7 +249,9 @@ ul { list-style: none; }
 .card-row { display: flex; gap: var(--card-gap); }
 .card-row[data-row] {
   overflow-x: auto; scrollbar-width: none;
-  padding: 46px 0 40px; margin: -46px 0 -40px;
+  /* padding + matching negative margins reserve room for the overhanging
+     badges (46px top, 34px right on the last card) inside the clip box */
+  padding: 46px 34px 40px 0; margin: -46px -34px -40px 0;
 }
 .card-row[data-row]::-webkit-scrollbar { display: none; }
 .card-row .p-card { flex: 0 0 var(--card-w); }
